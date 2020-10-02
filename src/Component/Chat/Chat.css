@@ -24,10 +24,6 @@
 .chat__headerInfo > p {
   color: gray;
 }
-/* .chat__header > .MuiSvgIcon-root {
-  color: gray;
-  margin: 20px;
-} */
 
 .chat__body {
   flex: 1;
@@ -41,7 +37,7 @@
 .chat__message {
   position: relative;
   font-size: 16px;
-  padding: 18px;
+  padding: 12px;
   width: fit-content;
   border-radius: 10px;
   margin-bottom: 30px;
@@ -89,7 +85,12 @@
 }
 
 .chat__footer > .MuiSvgIcon-root {
-  /* padding: 10px; */
   margin: 10px;
   color: gray;
+}
+
+.chat__timestamp {
+  color: rgb(71, 71, 71);
+  font-size: x-small;
+  font-weight: bold;
 }
