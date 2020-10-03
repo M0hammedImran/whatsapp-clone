@@ -8,18 +8,22 @@ import InsertEmoticonOutlined from '@material-ui/icons/InsertEmoticonOutlined';
 
 import './Chat.css';
 import MicIcon from '@material-ui/icons/Mic';
-import axios from '../../axios';
+import axios from '../../utils/axios';
 
 const Chat = ({ messages }) => {
   const [input, setInput] = useState('');
   const sendMessage = (e) => {
     e.preventDefault();
-    axios.post('/messages/new', {
-      name: 'imran',
-      message: input,
-      timestamp: new Date().toUTCString(),
-      received: true,
-    });
+    axios
+      .post('/messages/new', {
+        name: 'imran',
+        message: input,
+        timestamp: new Date().toUTCString(),
+        received: true,
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     setInput('');
   };
   return (
@@ -44,15 +48,14 @@ const Chat = ({ messages }) => {
       </div>
       <div className="chat__body">
         {React.Children.toArray(
-          messages.map(({ message, name, timestamp, received }) => {
-            return (
-              <p className={`chat__message ${received && 'chat__receiver'}`}>
-                <span className="chat__name">{name}</span>
-                {message}
-                <span className="chat__timestamp">{timestamp}</span>
-              </p>
-            );
-          })
+          // eslint-disable-next-line object-curly-newline
+          messages.map(({ message, name, timestamp, received }) => (
+            <p className={`chat__message ${received && 'chat__receiver'}`}>
+              <span className="chat__name">{name}</span>
+              {message}
+              <span className="chat__timestamp">{timestamp}</span>
+            </p>
+          ))
         )}
       </div>
       <div className="chat__footer">

@@ -2,7 +2,7 @@ import { Avatar } from '@material-ui/core';
 import React from 'react';
 import './SidebarChat.css';
 
-const SidebarChat = ({ addNewChat }) => {
+const SidebarChat = ({ addNewChat, room }) => {
   const createChat = () => {
     const roomName = prompt('Please Enter a Name for the Chat');
     if (roomName) {
@@ -13,7 +13,7 @@ const SidebarChat = ({ addNewChat }) => {
     <div className="sidebarChat">
       <Avatar src={'http://unsplash.it/30/30?random&gravity=center'} />
       <div className="sidebarChat__info">
-        <h2>Room Name</h2>
+        <h2>{room}</h2>
         <p>This is the last message.</p>
       </div>
     </div>

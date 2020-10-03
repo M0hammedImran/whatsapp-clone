@@ -9,7 +9,7 @@ import './Sidebar.css';
 import SearchOutlined from '@material-ui/icons/SearchOutlined';
 import SidebarChat from '../SidebarChat/SidebarChat';
 
-const Sidebar = () => (
+const Sidebar = ({ rooms }) => (
   <div className="sidebar">
     <div className="sidebar__header">
       <Avatar src="https://avatars2.githubusercontent.com/u/52968617?s=400&u=cc285f24e1c5f626cbb2fd6baffcd4d2dc995927&v=4" />
@@ -37,8 +37,11 @@ const Sidebar = () => (
     </div>
     <div className="sidebar_chats">
       <SidebarChat addNewChat />
-      <SidebarChat />
-      <SidebarChat />
+      {rooms.length >= 1 && rooms[0].length >= 1
+        ? React.Children.toArray(
+            rooms.map((room) => <SidebarChat room={room} />)
+          )
+        : ''}
     </div>
   </div>
 );
